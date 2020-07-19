@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+html {
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: inherit;
+}
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: inherit;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a,
+button {
+  cursor: pointer;
+}
+ul,
+li {
+  list-style: none;
+}
+.body {
+  background-color: #c4c4c4;
+  width: 100%;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 62px 84px 72px 77px;
+}
+.input {
+  height: 61px;
+  border: none;
+  width: 100%;
+  font-size: 48px;
+  line-height: 56px;
+  padding: 5px 13px;
+}
+.suggests {
+  width: 100%;
+}
+.suggest {
+  width: 100%;
+  background-color: #e3e3e3;
+  border: 2px solid #000000;
+  font-size: 30px;
+  line-height: 35px;
+  padding: 5px 13px;
+}
+.suggest:hover {
+  background-color: #65cdf9;
+  cursor: pointer;
+}
+.suggest-active {
+  background-color: #65cdf9;
+}
+.input-wrapper {
+  margin-bottom: 45px;
+}
+.added-repo {
+  background-color: #e27beb;
+  border: 1px solid #000000;
+  padding: 8px 17px;
+  position: relative;
+}
+.added-repo__text {
+  width: 70%;
+}
+.added-repo__delete {
+  background-image: url(../img/delete.svg);
+  background-size: 100% 100%;
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  top: 31px;
+  right: 34px;
+  cursor: pointer;
+}
+.error {
+  color: red;
+}
+@media all and (max-width: 800px) {
+  .wrapper {
+    padding: 62px 0 72px;
+  }
+}
