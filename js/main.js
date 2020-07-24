@@ -1,3 +1,4 @@
+const suggestsElem = document.getElementById("suggests");
 const debounce = (fn, debounceTime) => {
   let timer;
   return function (...args) {
@@ -30,12 +31,7 @@ function updateRepos(repos = []) {
     hideSuggests();
     return;
   }
-  const firstFiveRepos = [];
-  const reposLength = repos.length >= 5 ? 5 : repos.length;
-  for (let i = 0; i < reposLength; i++) {
-    firstFiveRepos.push(repos[i]);
-  }
-  const suggestsElem = document.getElementById("suggests");
+  const firstFiveRepos = repos.slice(0, 5);
   suggestsElem.innerHTML = "";
   firstFiveRepos.forEach((item) => {
     suggestsElem.insertAdjacentHTML("beforeend", getFoundedRepoHtml(item));
@@ -45,7 +41,6 @@ function showError(error = "") {
   document.getElementById("error").innerText = error;
 }
 function hideSuggests() {
-  const suggestsElem = document.getElementById("suggests");
   suggestsElem.innerHTML = "";
 }
 function inputEventHandler(query = "") {
@@ -71,15 +66,14 @@ function addRepoToList(element = {}) {
   };
   addedReposElem.insertAdjacentHTML("beforeend", getAddedRepoHtml(itemObj));
 }
-document.getElementById("search").addEventListener("input", (event) => {
-  const query = event.target.value;
-  debounce(
-    (function () {
-      inputEventHandler(query);
-    })(),
-    500,
-  );
-});
+document.getElementById("search").addEventListener(
+  "input",
+  debounce((event) => {
+    const query = event.target.value;
+    inputEventHandler(query);
+  }, 500),
+);
+
 document.getElementById("suggests").addEventListener("click", (event) => {
   if (event.target.closest(".suggest")) {
     addRepoToList(event.target.closest(".suggest"));
